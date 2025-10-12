@@ -429,7 +429,7 @@
             font-weight: 700;
         }
 
-        /* Mood Vibes */
+        /* Social Media */
         .mood-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -449,7 +449,7 @@
             color: var(--light);
         }
 
-        .mood-item span {
+        .mood-item span, .mood-item h3 {
             display: block;
             margin-top: 10px;
             font-size: 1.2rem;
@@ -467,8 +467,42 @@
             color: var(--primary);
         }
 
-        .mood-item h3 {
-            font-size: 1.2rem;
+        /* Dummy Contact Form */
+        .contact-box {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+        }
+
+        .contact-box form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-box label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .contact-box input,
+        .contact-box textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+        }
+
+        .contact-box textarea {
+            resize: vertical;
+            min-height: 100px;
         }
 
         /* Footer */
@@ -571,64 +605,108 @@
             }
         }
 
-        /* Responsive */
+        /* Enhanced Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 3rem;
+            nav {
+                flex-direction: column;
+                padding: 20px;
             }
-            
             .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+                max-width: 90%;
+            }
+            .cta-button {
+                padding: 10px 30px;
+                font-size: 0.9rem;
+            }
+            .services-grid, .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .mood-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .contact-box {
+                padding: 20px;
+            }
+        }
+
+        /* Desktop Navigation */
+        .pc-nav {
+            display: flex;
+        }
+
+        .mobile-nav {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 200;
+        }
+
+        .mobile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-logo {
+            font-size: 20px;
+            color: var(--light);
+            text-decoration: none;
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+            display: none;
+            flex-direction: column;
+        }
+
+        .mobile-nav-links li {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        .mobile-nav-links li a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        @media (min-width: 769px) {
+            .pc-nav {
+                display: flex;
+            }
+
+            .mobile-nav {
                 display: none;
             }
-            
-            .calculator-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .calculator-result {
-                grid-column: span 1;
-            }
-            
-            .section {
-                padding: 80px 20px;
-            }
-        }
-
-        .contact-box {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-        }
-
-        .contact-box form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-box label {
-            font-weight: 500;
-            margin-bottom: 5px;
-            color: var(--light);
-        }
-
-        .contact-box input,
-        .contact-box textarea {
-            width: 100%;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            color: var(--light);
-            font-size: 1rem;
-        }
-
-        .contact-box textarea {
-            resize: vertical;
-            min-height: 100px;
         }
     </style>
 </head>
@@ -640,8 +718,8 @@
         <div class="control maximize"></div>
     </div>
 
-    <!-- Navigation -->
-    <nav>
+    <!-- Desktop Navigation -->
+    <nav class="pc-nav">
         <a href="#" class="logo">Pix Studios Sri Lanka</a>
         <div class="nav-links">
             <a href="#services">Services</a>
@@ -649,6 +727,22 @@
             <a href="#ceo">CEO Message</a>
             <a href="#contact">Contact</a>
         </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-header">
+            <a href="#" class="mobile-logo">Pix Studios Sri Lanka</a>
+            <button id="hamburger" class="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <ul class="mobile-nav-links" id="mobile-nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#ceo">CEO Message</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
@@ -706,7 +800,6 @@
                 <h3>Whatsapp Bot Development</h3>
                 <p>Innovative AI solutions to enhance your business processes.</p>
             </div>
-            
         </div>
     </section>
 
@@ -737,7 +830,7 @@
                 <img src="https://files.catbox.moe/445hwv.jpg" alt="Video Project">
                 <div class="portfolio-overlay">
                     <h3>Birthday Post</h3>
-                    <p>ByPix Studios Sri Lanka</p>
+                    <p>By Pix Studios Sri Lanka</p>
                 </div>
             </div>
             <div class="portfolio-item">
@@ -756,8 +849,6 @@
             </div>
         </div>
     </section>
-
-    
 
     <!-- Social Media -->
     <section class="section" id="social-media">
@@ -829,7 +920,6 @@
                 <h3>Services Status</h3>
                 <ul class="footer-links">
                     <li><a href="#">All Service Are Available <i class="fas fa-circle online-indicator"></i></a></li>
-                    
                 </ul>
             </div>
             <div class="footer-column">
