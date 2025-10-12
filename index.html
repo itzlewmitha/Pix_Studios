@@ -1019,9 +1019,19 @@
                 });
             });
         });
+         document.getElementById('hamburger').addEventListener('click', function () {
+            const mobileLinks = document.getElementById('mobile-nav-links');
+            if (mobileLinks.style.display === 'flex') {
+                mobileLinks.style.display = 'none';
+            } else {
+                mobileLinks.style.display = 'flex';
+                mobileLinks.style.flexDirection = 'column';
+            }
+        });
     </script>
 </body>
 
 </html>
+
 
 
